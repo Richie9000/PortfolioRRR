@@ -1,14 +1,18 @@
 import React from 'react'
 import { Breakpoint } from 'react-socks'
+import ShirtMarkUp from './ShirtMarkUp';
+
 
 const Home = () => {
   return (
     <div>
     <Breakpoint small down>
      <Paragraph margin="40px" />
+     <ShirtMarkUp height="50vh"/>
     </Breakpoint>
     <Breakpoint medium up>
      <Paragraph/>
+     <ShirtMarkUp height="80vh"/>
     </Breakpoint>
     </div>
   )

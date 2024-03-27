@@ -11,7 +11,6 @@ function App() {
     <BreakpointProvider>
     <Navbar/>
     <Home/>
-    <Shirt />
     </BreakpointProvider>
   </div>
  )
