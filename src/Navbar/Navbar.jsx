@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import "./Navbar.css"
 import { Breakpoint } from 'react-socks'
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
 
@@ -26,16 +27,16 @@ const Navbar = () => {
     <div className={`collapse navbar-collapse ${isMenuOpen ? 'show' : ''}`}>
       <ul className="navbar-nav">
         <li className="nav-item active">
-          <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+          <Link className="nav-link" to="/">Home</Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">360°</a>
+          <Link className="nav-link" to="/360">360°</Link>
         </li>
         <li className="nav-item dropdown">
-        <a className="nav-link" href="#">House</a>
+         <Link className="nav-link" to="/house">House</Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link disabled" href="#">Contact</a>
+        <Link className="nav-link" to="/contact">Contact</Link>
         </li>
       </ul>
     
@@ -45,16 +46,16 @@ const Navbar = () => {
       <div className="collapse navbar-collapse desktop">
           <ul className="navbar-nav">
           <li className="nav-item active">
-          <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+          <Link className="nav-link" to="/">Home</Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">360°</a>
+        <Link className="nav-link" to="/360">360°</Link>
         </li>
         <li className="nav-item dropdown">
-        <a className="nav-link" href="#">House</a>
+        <Link className="nav-link" to="/house">House</Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link disabled" href="#">Contact</a>
+        <Link className="nav-link" to="/contact">Contact</Link>
         </li>
           </ul>
         </div>

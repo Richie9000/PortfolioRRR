@@ -6,4 +6,4 @@ const ThreeSixty= () => {
   )
 }
 
-export default 360
+export default ThreeSixty
