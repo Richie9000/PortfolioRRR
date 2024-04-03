@@ -1,0 +1,27 @@
+.navbar-collapse {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #060606;
+    z-index: 1000;
+    display: none;
+  }
+  
+  .navbar-collapse.show {
+    display: block;
+  }
+
+  .navbar-nav .nav-link {
+    color: white !important;
+  }
+  
+  .navbar-collapse.desktop {
+    position: static;
+    display: flex !important;
+    background-color: transparent;
+  }
+  
+  .navbar-collapse.desktop .navbar-nav .nav-link {
+    color: inherit !important;
+  }
