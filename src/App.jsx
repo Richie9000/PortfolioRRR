@@ -4,8 +4,9 @@ import Home from './Home/Home'
 import { BreakpointProvider } from 'react-socks';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Contact from './Contact/Contact';
-import House from './House/House';
-import ThreeSixty from './ThreeSixty/ThreeSixty';
+import HouseMarkUp from './House/HouseMarkUp';
+import ThreeSixtyMarkUp from './ThreeSixty/TnreeSixtyMarkUp';
+
 
 
 function App() {
@@ -17,8 +18,8 @@ function App() {
   <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/house" element={<House />} />
-            <Route path="/360" element={<ThreeSixty />} />
+            <Route path="/house" element={<HouseMarkUp />} />
+            <Route path="/360" element={<ThreeSixtyMarkUp />} />
   </Routes>
   
   </BreakpointProvider>
