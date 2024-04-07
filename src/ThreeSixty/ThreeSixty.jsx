@@ -3,6 +3,8 @@ import * as THREE from 'three';
 import { Html } from '@react-three/drei';
 import { Canvas, useThree, useLoader, useFrame } from '@react-three/fiber';
 import { Popconfirm } from 'antd';
+import { useMediaQuery } from "@uidotdev/usehooks";
+
 
 const store = [
   { name: 'Living', color: 'lightpink', position: [10, 0, -20], url: '/living.jpg', link: 1, description: "Fully fitted and equipped open kitchen, 2 bedrooms Approximately 8 feet inside the front door, the small hallway entrance opened into the living room.", planURL: "/planliving.jpg" },
@@ -54,17 +56,21 @@ function Dome({ name, position, texture, onClick }) {
 
 
 function SceneInfo({ name, description, planURL }) {
+  const { viewport } = useThree();
+  const isMobile = useMediaQuery('(max-width: 768px)');
+
   return (
-    
     <Html
       style={{
         backgroundColor: 'rgba(0, 0, 0, 0.8)',
         color: 'white',
         position: 'absolute',
-        left: '-44vw',
-        width: '10vw',
-        padding: '25px',
-        height: '95vh',
+        left: isMobile ? '0' : '-44vw',
+        width: isMobile ? '90vw' : '10vw',
+        padding: isMobile ? '0px' : '25px',
+        height: isMobile ? 'auto' : '95vh',
+
+        top: isMobile ? '-42vh' : 'auto',
         opacity: 1,
       }}
       position={[0, 0, 0]}
@@ -73,19 +79,20 @@ function SceneInfo({ name, description, planURL }) {
       <div
         style={{
           textAlign: 'center',
-          padding: '10px',
+          padding: isMobile ? '5px' : '10px',
           borderRadius: '5px',
           opacity: 1,
         }}
       >
-        <img src={planURL} alt={`${planURL} plan`} style={{ width: '100%' }} />
-        <h2>{name}</h2>
-        <p style={{ lineHeight: '1.8' }}>{description}</p>
-        <a href="#" style={{ color: 'black' }}>
-          {name}
-        </a>
+        {!isMobile && <img src={planURL} alt={`${planURL} plan`} style={{ width: '100%' }} />}
+        <h2 style={{ fontSize: isMobile ? '1.2rem' : 'inherit' }}>{name}</h2>
+        <p style={{ lineHeight: isMobile ? '1.4' : '1.8', fontSize: isMobile ? '0.9rem' : 'inherit' }}>{description}</p>
+        {!isMobile && (
+          <a href="#" style={{ color: 'black' }}>
+            {name}
+          </a>
+        )}
       </div>
     </Html>
   );
 }
-
