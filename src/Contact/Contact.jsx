@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import emailjs from 'emailjs-com';
+import "./Contact.css"
 
 const Contact = () => {
   const form = useRef();
@@ -19,21 +20,27 @@ const Contact = () => {
   };
 
   return (
-    <div>
-      <h2>Contact Us</h2>
-      <form ref={form} onSubmit={sendEmail}>
-        <label>Name</label>
-        <input type="text" name="user_name" required />
+    <div className='form' >
+    <h2>Contact me</h2>
+    <form ref={form} onSubmit={sendEmail}>
+      <div className="form-group">
+        <div className='forms'>
 
-        <label>Email</label>
-        <input type="email" name="user_email" required />
-
-        <label>Message</label>
-        <textarea name="message" required />
-
-        <input type="submit" value="Send" />
-      </form>
-    </div>
+      <label>Name</label>
+      <input type="text" name="user_name" required />
+        </div>
+      </div>
+      <div className="form-group">
+      <label>Email</label>
+      <input type="email" name="user_email" required />
+      </div>
+      <div className="form-group">
+      <label>Message</label>
+      <textarea name="message" required />
+      </div>
+      <input type="submit" value="Send" />
+    </form>
+  </div>
   );
 };
 
