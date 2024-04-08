@@ -39,7 +39,7 @@ function Dome({ name, position, texture, onClick }) {
         <meshBasicMaterial color="white" />
         <Html position={[position[0] - .1, position[1] + 1.2, position[2] - 1.4]}>
           <Popconfirm
-            title="Are you sure you want to leave?"
+            title="Next Room?"
             onConfirm={onClick}
             okText="Yes"
             cancelText="No"
