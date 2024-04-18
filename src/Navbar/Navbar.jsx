@@ -3,13 +3,15 @@ import "./Navbar.css"
 import { Breakpoint } from 'react-socks'
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({ language, toggleLanguage }) => {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const toggleNavbar = () => {
     setIsMenuOpen(!isMenuOpen)
   }
+
+
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -58,7 +60,11 @@ const Navbar = () => {
         <Link className="nav-link" to="/contact">Contact</Link>
         </li>
           </ul>
+          <button className="btn btn-link" onClick={toggleLanguage}>
+            {language === 'english' ? 'ES' : 'EN'}
+          </button>
         </div>
+        
       </Breakpoint>
   
   </nav>

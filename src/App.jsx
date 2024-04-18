@@ -10,13 +10,19 @@ import ThreeSixtyMarkUp from './ThreeSixty/TnreeSixtyMarkUp';
 
 
 function App() {
+    const [language, setLanguage] = useState('english');
+
+    const toggleLanguage = () => {
+      setLanguage(language === 'english' ? 'spanish' : 'english');
+    };
+  
  return(
   <Router>
   <div>
   <BreakpointProvider>
-  <Navbar />
+  <Navbar language={language} toggleLanguage={toggleLanguage} />
   <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home language={language} />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/house" element={<HouseMarkUp />} />
             <Route path="/360" element={<ThreeSixtyMarkUp />} />
