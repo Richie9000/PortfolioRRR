@@ -7,27 +7,37 @@ import { useMediaQuery } from "@uidotdev/usehooks";
 
 
 const store = [
-  { name: 'Living', color: 'lightpink', position: [10, 0, -20], url: '/living.jpg', link: 1, description: "Fully fitted and equipped open kitchen, 2 bedrooms Approximately 8 feet inside the front door, the small hallway entrance opened into the living room.", planURL: "/planliving.jpg" },
-  { name: 'Bedroom', color: 'lightblue', position: [10, 0, 0], url: '/living3.jpg', link: 2, description: "Enjoy playing the piano, the small hallway entrance opened into the living room.", planURL: "/planliving.jpg" },
-  { name: "Bedroom 2", color: "lightgreen", position: [10, 0, 20], url: "/bedroom.jpg", link: 3, description: "Upstairs, you find the master bedroom, a large solarium and access to the pool via a pretty stone walkway.", planURL: "/planliving.jpg" },
-  { name: "Living", color: "lightpurple", position: [10, 0, 10], url: "/bedroom2.jpg", link: 0, description: "The master bedroom has an en suite bathroom, dressing room and access to the terrace.", planURL: "/planliving.jpg"},
+  { linkname: 'Studio', displayname:"Living", color: 'lightpink', position: [10, 0, -20], url: '/living.jpg', link: 1,  description: {
+    english: "Fully fitted and equipped open kitchen, 2 bedrooms Approximately 8 feet inside the front door, the small hallway entrance opened into the living room.",
+    spanish: "Cocina abierta totalmente equipada, 2 dormitorios. Aproximadamente a 8 pies de la puerta principal, la pequeña entrada del pasillo se abre a la sala de estar."
+  },planURL: "/planliving.jpg" },
+  { linkname: 'Master Bedroom', displayname:"Studio",color: 'lightblue', position: [10, 0, 0], url: '/living3.jpg', link: 2, description: {
+    english: "Studio includes various amenities, ennjoy playing the piano, the small hallway entrance opened into the living room.",
+    spanish: "El studio incluye varias amenidades, disfruta de tocar el piano en el ambiente principal."
+  }, planURL: "/planliving.jpg" },
+  { linkname: "Bedroom", displayname:"Master Bedroom", color: "lightgreen", position: [10, 0, 20], url: "/bedroom.jpg", link: 3, description: {
+    english: "Upstairs, you find the master bedroom, a large terrace and access to the pool via a pretty stone walkway.",
+    spanish: "En el segundo piso se encuentra la recamara principal, una terraza con acceso a la piscina a traves de un camino de rocas."
+  }, planURL: "/planliving.jpg" },
+  { linkname: "Living", displayname:"Bedroom", color: "lightpurple", position: [10, 0, 10], url: "/bedroom2.jpg", link: 0, description: "The master bedroom has an en suite bathroom, dressing room and access to the terrace.", planURL: "/planliving.jpg"},
 ];
 
-export default function Portals() {
+
+export default function Portals({language}) {
   const [which, set] = useState(0);
-  const { link, name, description, planURL, ...props } = store[which];
+  const { link, linkname, displayname, description, planURL, ...props } = store[which];
   const maps = useLoader(THREE.TextureLoader, store.map((entry) => entry.url));
 
   return (
     <>
      
-        <Dome name={name} onClick={() => set(link)} {...props} texture={maps[which]} />
+        <Dome  linkname={linkname} onClick={() => set(link)} {...props} texture={maps[which]} />
       
-      <SceneInfo  name={name} description={description} planURL={planURL} />
+      <SceneInfo  displayname={displayname} description={description} planURL={planURL} language={language}/>
     </>
   );
 }
-function Dome({ name, position, texture, onClick }) {
+function Dome({ linkname, position, texture, onClick }) {
   return (
     <group>
       <mesh>
@@ -45,7 +55,7 @@ function Dome({ name, position, texture, onClick }) {
             cancelText="No"
           >
             <a href="#" style={{ color: 'black' }}>
-              {name}
+              {linkname}
             </a>
           </Popconfirm>
         </Html>
@@ -54,8 +64,7 @@ function Dome({ name, position, texture, onClick }) {
   );
 }
 
-
-function SceneInfo({ name, description, planURL }) {
+function SceneInfo({ displayname, description, planURL, language }) {
   const { viewport } = useThree();
   const isMobile = useMediaQuery('(max-width: 768px)');
 
@@ -67,9 +76,8 @@ function SceneInfo({ name, description, planURL }) {
         position: 'absolute',
         left: isMobile ? '0' : '-44vw',
         width: isMobile ? '90vw' : '10vw',
-        padding: isMobile ? '0px' : '25px',
+        padding: isMobile ? '10px' : '25px',
         height: isMobile ? 'auto' : '95vh',
-
         top: isMobile ? '-42vh' : 'auto',
         opacity: 1,
       }}
@@ -82,16 +90,24 @@ function SceneInfo({ name, description, planURL }) {
           padding: isMobile ? '5px' : '10px',
           borderRadius: '5px',
           opacity: 1,
+          marginTop: isMobile ? "25vh" : "1vh"
         }}
       >
-        {!isMobile && <img src={planURL} alt={`${planURL} plan`} style={{ width: '100%' }} />}
-        <h2 style={{ fontSize: isMobile ? '1.2rem' : 'inherit' }}>{name}</h2>
-        <p style={{ lineHeight: isMobile ? '1.4' : '1.8', fontSize: isMobile ? '0.9rem' : 'inherit' }}>{description}</p>
-        {!isMobile && (
-          <a href="#" style={{ color: 'black' }}>
-            {name}
-          </a>
+        {planURL && (
+          <img
+            src={planURL}
+            alt={`${planURL} plan`}
+            style={{
+              width: isMobile ? '80%' : '100%',
+              height: isMobile ? 'auto' : 'auto',
+              marginBottom: isMobile ? '10px' : '0',
+            }}
+          />
         )}
+        <h2 style={{ fontSize: isMobile ? '1.2rem' : 'inherit' }}>{displayname}</h2>
+        <p style={{ marginTop: "5vh", lineHeight: isMobile ? '1.4' : '1.8', fontSize: isMobile ? '0.9rem' : 'inherit' }}>
+          {language === 'english' ? description.english : description.spanish}
+        </p>
       </div>
     </Html>
   );

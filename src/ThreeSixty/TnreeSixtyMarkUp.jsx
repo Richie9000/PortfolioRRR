@@ -5,7 +5,7 @@ import { Canvas } from '@react-three/fiber';
 import { Preload, OrbitControls } from '@react-three/drei';
 import { Suspense } from 'react';
 
-const ThreeSixtyMarkUp = () => {
+const ThreeSixtyMarkUp = ({ language }) => {
   return (
     <BreakpointProvider>
     
@@ -13,7 +13,7 @@ const ThreeSixtyMarkUp = () => {
       <OrbitControls enableZoom={false} enablePan={false} enableDamping dampingFactor={0.2} autoRotate={false} rotateSpeed={-0.5} />
       <Suspense fallback={null}>
         <Preload all />
-        <Portals />
+        <Portals language={language} />
       </Suspense>
     </Canvas>
     </BreakpointProvider>

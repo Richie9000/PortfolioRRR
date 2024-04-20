@@ -18,6 +18,9 @@ const Navbar = ({ language, toggleLanguage }) => {
     <a className="navbar-brand" href="#">Portfolio 3D3R</a>
       <Breakpoint small down>
 
+       <button className="btn btn-link" onClick={toggleLanguage}>
+            {language === 'english' ? 'ES' : 'EN'}
+          </button>
        <button 
          className="navbar-toggler" 
          type="button" 
@@ -41,7 +44,7 @@ const Navbar = ({ language, toggleLanguage }) => {
         <Link className="nav-link" to="/contact">Contact</Link>
         </li>
       </ul>
-    
+      
     </div>
       </Breakpoint>
       <Breakpoint large up>

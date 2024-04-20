@@ -9,7 +9,7 @@ const Home = ({ language }) => {
   return (
     <div>
     <Breakpoint small down>
-     <Paragraph margin="40px" />
+     <Paragraph margin="40px" language={language}/>
      <ShirtMarkUp height="50vh"/>
     </Breakpoint>
     <Breakpoint medium up>
@@ -44,5 +44,7 @@ const Paragraph = ({ margin, width, language }) => {
     </div>
   );
 };
+
+
 
 export default Home

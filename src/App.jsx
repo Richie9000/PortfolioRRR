@@ -25,7 +25,7 @@ function App() {
             <Route path="/" element={<Home language={language} />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/house" element={<HouseMarkUp />} />
-            <Route path="/360" element={<ThreeSixtyMarkUp />} />
+            <Route path="/360" element={<ThreeSixtyMarkUp language={language}/>} />
   </Routes>
   
   </BreakpointProvider>
