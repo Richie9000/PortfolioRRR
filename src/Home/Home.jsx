@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Breakpoint } from 'react-socks'
 import ShirtMarkUp from './ShirtMarkUp';
 import "./Home.css"
+import RobotMarkUp from './RobotMarkUp';
 
 
 
@@ -10,7 +11,7 @@ const Home = ({ language }) => {
     <div>
     <Breakpoint small down>
      <Paragraph margin="40px" language={language}/>
-     <ShirtMarkUp height="50vh"/>
+     <RobotMarkUp height="50vh"/>
     </Breakpoint>
     <Breakpoint medium up>
       <div className="container-sp">
