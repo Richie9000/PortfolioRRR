@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React, { Suspense, useState } from 'react'
 import { Breakpoint } from 'react-socks'
 import ShirtMarkUp from './ShirtMarkUp';
 import "./Home.css"
 import RobotMarkUp from './RobotMarkUp';
+
+import WHMarkUp from './WHMarkUp';
+
 
 
 
@@ -16,7 +19,9 @@ const Home = ({ language }) => {
     <Breakpoint medium up>
       <div className="container-sp">
      <Paragraph margin="8vw" width="45vw" language={language} />
-     <ShirtMarkUp height="80vh" width= "45vw"/>
+     <ShirtMarkUp height="80vh" width= "45vw"/>   
+        <WHMarkUp height="80vh" width= "45vw"/>
+   
       </div>
     </Breakpoint>
     </div>
