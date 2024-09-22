@@ -6,97 +6,31 @@ import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { useBox } from '@react-three/cannon'
 
+
 export default function Warehouse(props) {
   const { nodes, materials } = useGLTF('/warehouse.glb')
 
-  const [boxOne] = useBox(() => ({ 
-    mass: 1, // 0 mass makes it static
-    position: [31.716, 2.5, 0],
-    rotation: [0, 0, -Math.PI / 2],
-    args: [20, 1, 2.5] // size of the physics body
-  }))
+
+  
 
   return (
     <group {...props} dispose={null}>
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Wall1.geometry}
-        material={nodes.Wall1.material}
-        position={[31.716, 2.5, 0]}
-        rotation={[0, 0, -Math.PI / 2]}
-        scale={[2.5, 1, 20]}
+        geometry={nodes.Building.geometry}
+        material={materials.Metalic}
+        position={[8.326, 2.539, -20.042]}
+        scale={[23.4, 2.5, 0.1]}
       />
       <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Wall2.geometry}
-        material={nodes.Wall2.material}
-        position={[-15.037, 2.5, 0]}
-        rotation={[0, 0, -Math.PI / 2]}
-        scale={[2.5, 1, 20]}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Wall3.geometry}
-        material={nodes.Wall3.material}
-        position={[8.311, 2.5, -20]}
-        rotation={[-Math.PI / 2, Math.PI / 2, 0]}
-        scale={[2.5, 1, 23.4]}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Wall4.geometry}
-        material={nodes.Wall4.material}
-        position={[8.51, 2.5, 20]}
-        rotation={[-Math.PI / 2, Math.PI / 2, 0]}
-        scale={[2.5, 1, 23.382]}
-      />
-      <mesh
+      
         castShadow
         receiveShadow
         geometry={nodes.Floor.geometry}
-        material={nodes.Floor.material}
-        position={[8.363, 1, 0]}
-        scale={[23.394, 0.25, 20]}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Wall1001.geometry}
-        material={nodes.Wall1001.material}
-        position={[-2.472, 2.031, 15.009]}
-        rotation={[0, 0, -Math.PI / 2]}
-        scale={[0.8, 1, 5]}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Wall1002.geometry}
-        material={nodes.Wall1002.material}
-        position={[9.987, 2.5, 5.418]}
-        rotation={[0, 0, -Math.PI / 2]}
-        scale={[2.5, 1, 5.5]}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Wall4001.geometry}
-        material={nodes.Wall4001.material}
-        position={[-1.465, 2.5, -0.11]}
-        rotation={[-Math.PI / 2, Math.PI / 2, 0]}
-        scale={[2.5, 1, 13.5]}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Wall4002.geometry}
-        material={nodes.Wall4002.material}
-        position={[25.629, 2.228, 7.265]}
-        rotation={[-Math.PI / 2, Math.PI / 2, 0]}
-        scale={[1, 1, 6.15]}
+        material={materials.White}
+        position={[8.326, 2.539, -20.042]}
+        scale={[23.4, 2.5, 0.1]}
       />
       <mesh
         castShadow
@@ -264,45 +198,19 @@ export default function Warehouse(props) {
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Cube006.geometry}
-        material={nodes.Cube006.material}
+        geometry={nodes.Forklift.geometry}
+        material={nodes.Forklift.material}
         position={[-12.125, 2.474, -17.786]}
         scale={[0.9, 1.05, 0.6]}
       />
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Cube007.geometry}
-        material={nodes.Cube007.material}
-        position={[18.365, 3.457, -14.347]}
-        rotation={[0, 0, -Math.PI / 2]}
-        scale={[2.15, 0.1, 0.1]}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Cube008.geometry}
-        material={nodes.Cube008.material}
-        position={[22.493, 1.237, -14.347]}
-        scale={[6, 0.1, 0.15]}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Cube009.geometry}
-        material={nodes.Cube009.material}
-        position={[16.81, 3.457, -14.347]}
-        rotation={[0, 0, -Math.PI / 2]}
-        scale={[2.15, 0.1, 0.1]}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Cube010.geometry}
-        material={nodes.Cube010.material}
-        position={[17.597, 5.527, -14.347]}
-        rotation={[0, 0, -Math.PI]}
-        scale={[0.8, 0.1, 0.1]}
+        geometry={nodes.Distributor.geometry}
+        material={nodes.Distributor.material}
+        position={[16.907, 2.341, -14.412]}
+        rotation={[Math.PI / 2, 0, -Math.PI / 2]}
+        scale={[0.55, 0.1, 0.01]}
       />
       <mesh
         castShadow
@@ -1106,11 +1014,11 @@ export default function Warehouse(props) {
         scale={[0.25, 0.125, 0.25]}
       />
       <mesh
-      ref={boxOne}
+       
         castShadow
         receiveShadow
         geometry={nodes.Cube131.geometry}
-        material={nodes.Cube131.material}
+        material={materials.Yellow}
         position={[19.065, 10.228, -12.361]}
         scale={0.399}
       />
@@ -1309,93 +1217,10 @@ export default function Warehouse(props) {
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Cube073.geometry}
-        material={nodes.Cube073.material}
+        geometry={nodes.Packing_zone.geometry}
+        material={nodes.Packing_zone.material}
         position={[25.615, 1.717, 8.399]}
         scale={[6, 0.5, 1]}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Cube074.geometry}
-        material={nodes.Cube074.material}
-        position={[25.615, 2.372, 7.728]}
-        scale={[6, 0.25, 0.3]}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Cube083.geometry}
-        material={nodes.Cube083.material}
-        position={[26.257, 4.523, 13.82]}
-        rotation={[0, Math.PI / 2, 0]}
-        scale={[0.05, 0.4, 0.6]}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Cylinder010.geometry}
-        material={nodes.Cylinder010.material}
-        position={[26.254, 3.751, 13.982]}
-        scale={[0.183, 0.593, 0.183]}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Cube138.geometry}
-        material={nodes.Cube138.material}
-        position={[26.261, 2.218, 13.641]}
-        scale={[1, 1, 0.55]}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Cube139.geometry}
-        material={nodes.Cube139.material}
-        position={[22.944, 2.218, 13.641]}
-        scale={[1, 1, 0.55]}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Cube140.geometry}
-        material={nodes.Cube140.material}
-        position={[22.939, 4.523, 13.82]}
-        rotation={[0, Math.PI / 2, 0]}
-        scale={[0.05, 0.4, 0.6]}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Cube141.geometry}
-        material={nodes.Cube141.material}
-        position={[19.596, 4.523, 13.82]}
-        rotation={[0, Math.PI / 2, 0]}
-        scale={[0.05, 0.4, 0.6]}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Cube142.geometry}
-        material={nodes.Cube142.material}
-        position={[19.6, 2.218, 13.641]}
-        scale={[1, 1, 0.55]}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Cylinder011.geometry}
-        material={nodes.Cylinder011.material}
-        position={[22.936, 3.751, 13.982]}
-        scale={[0.183, 0.593, 0.183]}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Cylinder012.geometry}
-        material={nodes.Cylinder012.material}
-        position={[19.593, 3.751, 13.982]}
-        scale={[0.183, 0.593, 0.183]}
       />
     </group>
   )

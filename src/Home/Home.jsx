@@ -1,7 +1,6 @@
 import React, { Suspense, useState } from 'react'
 import { Breakpoint } from 'react-socks'
 import ShirtMarkUp from './ShirtMarkUp';
-import "./Home.css"
 import RobotMarkUp from './RobotMarkUp';
 
 import WHMarkUp from './WHMarkUp';
@@ -17,13 +16,14 @@ const Home = ({ language }) => {
      <RobotMarkUp height="50vh"/>
     </Breakpoint>
     <Breakpoint medium up>
-      <div className="container-sp">
-     <Paragraph margin="8vw" width="45vw" language={language} />
-     <ShirtMarkUp height="80vh" width= "45vw"/>   
-        <WHMarkUp height="80vh" width= "45vw"/>
-   
-      </div>
-    </Breakpoint>
+  <div style={{display:"flex", width:"100%", justifyContent: "space-between"}}>
+    <div style={{width: "50%"}}>
+      <Paragraph margin="5vh 1vh 1vh 1vh" width="100%" language={language} />
+      <WHMarkUp height="60vh" width="100%"/>
+    </div>
+    <ShirtMarkUp height="80vh" width="50vw"/>   
+  </div>
+</Breakpoint>
     </div>
   )
 }
