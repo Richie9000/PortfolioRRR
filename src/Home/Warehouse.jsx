@@ -6,12 +6,16 @@ import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { useBox } from '@react-three/cannon'
 
-
 export default function Warehouse(props) {
   const { nodes, materials } = useGLTF('/warehouse.glb')
 
+  const [boxOne] = useBox(() => ({ 
+    mass: 1, // 0 mass makes it static
+    position: [11.716, 5.5, -10],
+    rotation: [0, 0, -Math.PI / 2],
+    args: [2, 1, 2.5] // size of the physics body
+  }))
 
-  
 
   return (
     <group {...props} dispose={null}>
@@ -20,15 +24,6 @@ export default function Warehouse(props) {
         receiveShadow
         geometry={nodes.Building.geometry}
         material={materials.Metalic}
-        position={[8.326, 2.539, -20.042]}
-        scale={[23.4, 2.5, 0.1]}
-      />
-      <mesh
-      
-        castShadow
-        receiveShadow
-        geometry={nodes.Floor.geometry}
-        material={materials.White}
         position={[8.326, 2.539, -20.042]}
         scale={[23.4, 2.5, 0.1]}
       />
@@ -1014,7 +1009,7 @@ export default function Warehouse(props) {
         scale={[0.25, 0.125, 0.25]}
       />
       <mesh
-       
+        ref={boxOne}
         castShadow
         receiveShadow
         geometry={nodes.Cube131.geometry}
